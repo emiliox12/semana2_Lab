@@ -27,7 +27,7 @@ public class Modelo {
 	 */
 	public Modelo(int capacidad)
 	{
-		datos = new ArregloDinamico(capacidad);
+		datos = new ArregloDinamico<String>(capacidad);
 	}
 	
 	/**
@@ -67,6 +67,4 @@ public class Modelo {
 	{
 		return datos.eliminar(dato);
 	}
-
-
 }
