@@ -2,12 +2,12 @@ package model.data_structures;
 
 /**
  * 2019-01-23
- * Estructura de Datos Arreglo Dinamico de Strings.
+ * Estructura de Datos Arreglo Dinamico de T.
  * El arreglo al llenarse (llegar a su maxima capacidad) debe aumentar su capacidad.
  * @author Fernando De la Rosa
  *
  */
-public class ArregloDinamico<T> implements IArregloDinamico<T> {
+public class ArregloDinamico<T extends Comparable<T>> implements IArregloDinamico<T> {
 		/**
 		 * Capacidad maxima del arreglo
 		 */
@@ -68,12 +68,38 @@ public class ArregloDinamico<T> implements IArregloDinamico<T> {
 		
 		@Override
 		public T buscar(T dato) {
-			return dato;
+			for (int i = 0; i < tamanoAct; i++) {
+				if (dato.compareTo(elementos[i]) == 0) {
+					return elementos[i];
+				}
+			}
+			return null;
 		}
 		
 		@Override
 		public T eliminar(T dato) {
-			return dato;
+			T toEliminate = null;
+			boolean eliminated = false; 
+			for (int i = 0; i < tamanoAct; i++) {
+				if (dato.compareTo(elementos[i]) == 0) {
+					toEliminate = elementos[i];
+					elementos[i] = (i < tamanoMax -2) ? elementos[i+1] : null;
+					eliminated = true;
+				} else if (eliminated) {
+					elementos[i] = (i < tamanoMax -2) ? elementos[i+1] : null;
+				}
+			}
+			tamanoAct--;
+			return toEliminate;
+		}
+
+		@Override
+		public void invertir() {
+			T[] nuevoArreglo= (T[]) new Object[tamanoMax];
+			for (int i = 0; i < tamanoAct; i++) {
+				nuevoArreglo[i] = elementos[tamanoMax - i - 1];
+			}
+			elementos = nuevoArreglo;
 		}
 
 }

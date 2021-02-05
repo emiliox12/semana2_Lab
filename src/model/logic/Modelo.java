@@ -66,5 +66,14 @@ public class Modelo {
 	public String eliminar(String dato)
 	{
 		return datos.eliminar(dato);
+	}	
+	/**
+	 * Requerimiento eliminar dato
+	 * @param dato Dato a eliminar
+	 * @return dato eliminado
+	 */
+	public void invertir()
+	{
+		datos.invertir();
 	}
 }
