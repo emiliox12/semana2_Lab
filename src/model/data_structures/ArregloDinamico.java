@@ -78,33 +78,6 @@ public class ArregloDinamico<T extends Comparable<T>> implements IArregloDinamic
 		}
 		return rta;
 	}
-
-	@Override
-	public T eliminar(T dato) {
-		T [] copia = (T[]) new Object[tamanoMax];
-		int i=0;
-		int j =0;
-		while (elementos.length>i) {
-
-			if (elementos[i].equals(dato)) {
-				i++;
-			}
-			else {
-				copia[j]= elementos[i];
-			}
-			j++;
-			i++;
-		}
-		
-		@Override
-		public T buscar(T dato) {
-			for (int i = 0; i < tamanoAct; i++) {
-				if (dato.compareTo(elementos[i]) == 0) {
-					return elementos[i];
-				}
-			}
-			return null;
-		}
 		
 		@Override
 		public T eliminar(T dato) {
@@ -132,5 +105,4 @@ public class ArregloDinamico<T extends Comparable<T>> implements IArregloDinamic
 			elementos = nuevoArreglo;
 		}
 
-}
 }
