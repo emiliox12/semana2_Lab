@@ -176,4 +176,13 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 	public void changeInfo(int pos, T elem) {
 		elements[pos] = elem;
 	}
+	
+	@Override
+	public String toString() {
+		String result = "";
+		for (T t : elements) {
+			result += " " + t;
+		}
+		return result;
+	}
 }

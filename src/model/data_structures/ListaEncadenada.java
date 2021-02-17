@@ -234,4 +234,15 @@ public class ListaEncadenada<T extends Comparable<T>> implements ILista <T> {
 			actual=actual.getNext();
 		}
 	}
+	
+	@Override
+	public String toString() {
+		Nodo<T> actual = raiz;
+		String result = "";
+		if (raiz == null) return "";
+		while (actual.next != null) {
+			result += " " + actual;
+		}
+		return result;
+	}
 }
