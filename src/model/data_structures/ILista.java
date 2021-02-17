@@ -115,4 +115,10 @@ public interface ILista<T extends Comparable<T>> {
 	 * @param elem
 	 */
 	void changeInfo(int pos, T elem);
+
+	void addFirst(Elemento element);
+
+	void addLast(Elemento element);
+
+	void insertElement(Elemento element, int pos);
 }
