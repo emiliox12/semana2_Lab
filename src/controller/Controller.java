@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Date;
 import java.util.Scanner;
 
 import model.logic.Modelo;
@@ -46,7 +47,6 @@ public class Controller {
 				case 2:
 					view.printMessage("--------- \nDar cadena (simple) a ingresar: ");
 					dato = lector.next();
-					modelo.agregar(dato);
 					view.printMessage("Dato agregado");
 					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
 					break;
@@ -54,7 +54,6 @@ public class Controller {
 				case 3:
 					view.printMessage("--------- \nDar cadena (simple) a buscar: ");
 					dato = lector.next();
-					respuesta = modelo.buscar(dato);
 					if ( respuesta != null)
 					{
 						view.printMessage("Dato encontrado: "+ respuesta);
@@ -69,7 +68,6 @@ public class Controller {
 				case 4:
 					view.printMessage("--------- \nDar cadena (simple) a eliminar: ");
 					dato = lector.next();
-					respuesta = modelo.eliminar(dato);
 					if ( respuesta != null)
 					{
 						view.printMessage("Dato eliminado "+ respuesta);
@@ -86,16 +84,12 @@ public class Controller {
 					view.printModelo(modelo);
 					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
 					break;	
-
-				case 7: 
-					view.printMessage("--------- \nContenido del Arreglo: ");
-					view.printModelo(modelo);
-					modelo.invertir();
-					view.printMessage("--------- \nArreglo invertido: ");
-					view.printModelo(modelo);
+					
+				case 6: 	
+					view.printMessage("--------- \nAdición de datos " + new Date() + ": ");
 					break;	
 					
-				case 6: 
+				case 7: 
 					view.printMessage("--------- \n Hasta pronto !! \n---------"); 
 					lector.close();
 					fin = true;
