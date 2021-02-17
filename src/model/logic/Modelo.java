@@ -3,6 +3,7 @@ package model.logic;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -23,16 +24,14 @@ public class Modelo {
 	 * Atributos del modelo del mundo
 	 */
 	private ILista<YoutubeVideo> datos;
-	private ILista<YoutubeVideo> datos2;
-	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
 	 */
 	public Modelo()
 	{
-		Date start = new Date();
-		datos = new ListaEncadenada<YoutubeVideo>();
-		datos2 = new ArregloDinamico<YoutubeVideo>(30);
+		long start = System.currentTimeMillis();
+		datos = new ArregloDinamico<YoutubeVideo>(100);
+		// datos = new ListaEncadenada<YoutubeVideo>();
 		Reader in;
 		try {
 			in = new FileReader("./data/videos-small.csv");
@@ -65,8 +64,8 @@ public class Modelo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Date end = new Date();
-		System.out.println(end + "/" + start);
+		long end = System.currentTimeMillis();
+		System.out.println(end - start);
 	}
 	
 	/**
