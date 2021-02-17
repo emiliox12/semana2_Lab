@@ -106,8 +106,7 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 
 	@Override
 	public void insertElement(T element, int pos) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override

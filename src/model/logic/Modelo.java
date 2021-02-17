@@ -12,6 +12,7 @@ import org.apache.commons.csv.CSVRecord;
 import model.data_structures.ArregloDinamico;
 import model.data_structures.IArregloDinamico;
 import model.data_structures.ILista;
+import model.data_structures.ListaEncadenada;
 
 /**
  * Definicion del modelo del mundo
@@ -22,6 +23,7 @@ public class Modelo {
 	 * Atributos del modelo del mundo
 	 */
 	private ILista<YoutubeVideo> datos;
+	private ILista<YoutubeVideo> datos2;
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
@@ -29,7 +31,8 @@ public class Modelo {
 	public Modelo()
 	{
 		Date start = new Date();
-		datos = new ArregloDinamico<YoutubeVideo>(30);
+		datos = new ListaEncadenada<YoutubeVideo>();
+		datos2 = new ArregloDinamico<YoutubeVideo>(30);
 		Reader in;
 		try {
 			in = new FileReader("./data/videos-small.csv");
