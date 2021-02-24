@@ -275,27 +275,27 @@ public class ListaEncadenada<T extends Comparable<T>> implements ILista <T> {
 	@Override
 	public ILista<T> subList(int pos, int size) {
 		ILista<T> rta=null;
-		
+
 		if (pos==1) {
 			rta = sublista(size);
 		}
 		Nodo<T> actualOriginal= raiz;
 		Nodo<T> nodoInicio= null;
 		if (pos!=1) {
-			
+
 			int posit=0;
 			while (actualOriginal.getNext()!= null && posit!= pos-1) {
 
 				if (posit == pos-1) {
 					nodoInicio = actualOriginal;
-				
+
 				}
 				actualOriginal=(Nodo<T>) actualOriginal.getNext();
 				posit++;
 			}
-		
-	
-			
+
+
+
 			ListaEncadenada<T> newLinkedlist = new ListaEncadenada<>();
 			Nodo<T> nuevoRaiz = new Nodo<T>(null);
 			newLinkedlist.raiz=nuevoRaiz;
@@ -310,7 +310,7 @@ public class ListaEncadenada<T extends Comparable<T>> implements ILista <T> {
 			rta=newLinkedlist;
 			return rta;
 		}
-		
+
 		return null;
 	}
 }
