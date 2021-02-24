@@ -14,6 +14,7 @@ import model.data_structures.ArregloDinamico;
 import model.data_structures.IArregloDinamico;
 import model.data_structures.ILista;
 import model.data_structures.ListaEncadenada;
+import model.utils.Ordenamiento;
 
 /**
  * Definicion del modelo del mundo
@@ -25,10 +26,16 @@ public class Modelo {
 	 */
 	private ILista<YoutubeVideo> datos;
 	/**
+	 * Atributos del modelo del mundo
+	 */
+	private Ordenamiento<YoutubeVideo> sorter;
+	
+	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
 	 */
 	public Modelo()
 	{
+		sorter = new Ordenamiento<YoutubeVideo>();
 		long start = System.currentTimeMillis();
 		datos = new ArregloDinamico<YoutubeVideo>(100);
 		// datos = new ListaEncadenada<YoutubeVideo>();
@@ -115,4 +122,9 @@ public class Modelo {
 		int pos = datos.isPresent(dato);
 		return datos.deleteElement(pos);
 	}	
+	
+
+	public void sortByLikes() {
+		sorter.ordenarInsercion(datos, , ascendente);
+	}
 }

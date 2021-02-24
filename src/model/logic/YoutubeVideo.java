@@ -69,7 +69,7 @@ public class YoutubeVideo implements Comparable<YoutubeVideo> {
 			return 0;
 		}
 	}
-
+	
 	public String getVideo_id() {
 		return video_id;
 	}

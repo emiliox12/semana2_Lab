@@ -1,5 +1,7 @@
 package model.data_structures;
 
+import java.util.Iterator;
+
 /**
  * 2019-01-23 Estructura de Datos Arreglo Dinamico de T. El arreglo al llenarse
  * (llegar a su maxima capacidad) debe aumentar su capacidad.
@@ -117,8 +119,10 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 
 	@Override
 	public T removeLast() {
-		// TODO Auto-generated method stub
-		return null;
+		T elem = elements[currentSize];
+		elements[currentSize] = null;
+		currentSize--;
+		return elem;
 	}
 
 	@Override
@@ -211,4 +215,5 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 		}
 		return newArray;
 	}
+
 }
