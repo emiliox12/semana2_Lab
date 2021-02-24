@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 
 
+
+
 public class ListaEncadenada<T extends Comparable<T>> implements ILista <T> {
 
 
@@ -255,13 +257,60 @@ public class ListaEncadenada<T extends Comparable<T>> implements ILista <T> {
 		}
 		ListaEncadenada<T> newLinkedlist = new ListaEncadenada<>();
 		Nodo<T> nuevoRaiz = new Nodo<T>(null);
+		newLinkedlist.raiz=nuevoRaiz;
 		Nodo<T> original = raiz;
 		nuevoRaiz=original;
+
 		while (original.getNext()!=null && newLinkedlist.size()<=numElementos) {
-			Nodo<T> siguiente =original.getNext();
-			nuevoRaiz.setNext(siguiente);
+
+			if (newLinkedlist.size()!= numElementos) {
+				nuevoRaiz.setNext(original.getNext());
+			}
+			original= original.getNext();
 		}
 		rta=newLinkedlist;
 		return rta;
+	}
+
+	@Override
+	public ILista<T> subList(int pos, int size) {
+		ILista<T> rta=null;
+		
+		if (pos==1) {
+			rta = sublista(size);
+		}
+		Nodo<T> actualOriginal= raiz;
+		Nodo<T> nodoInicio= null;
+		if (pos!=1) {
+			
+			int posit=0;
+			while (actualOriginal.getNext()!= null && posit!= pos-1) {
+
+				if (posit == pos-1) {
+					nodoInicio = actualOriginal;
+				
+				}
+				actualOriginal=(Nodo<T>) actualOriginal.getNext();
+				posit++;
+			}
+		
+	
+			
+			ListaEncadenada<T> newLinkedlist = new ListaEncadenada<>();
+			Nodo<T> nuevoRaiz = new Nodo<T>(null);
+			newLinkedlist.raiz=nuevoRaiz;
+			nuevoRaiz = nodoInicio;
+			while (actualOriginal.getNext()!=null && newLinkedlist.size()<=size) {
+
+				if (newLinkedlist.size()!= size) {
+					nuevoRaiz.setNext(actualOriginal.getNext());
+				}
+				actualOriginal= actualOriginal.getNext();
+			}
+			rta=newLinkedlist;
+			return rta;
+		}
+		
+		return null;
 	}
 }
