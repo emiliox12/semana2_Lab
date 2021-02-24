@@ -125,4 +125,12 @@ public interface ILista<T extends Comparable<T>> {
 	 */
 	public ILista<T> sublista(int numElementos);
 	
+	/**
+	* Retorna una sublista con los elementos desde pos hasta la cantidad solicitada.
+	* @param pos Posición desde la que se quiere obtener la sublista.
+	* @param size Tamaño de la sublista.
+	* @return Una nueva lista con los elementos solicitados.
+	*/
+	public ILista<T> subList(int pos, int size);
+	
 }

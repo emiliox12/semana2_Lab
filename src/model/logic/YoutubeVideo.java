@@ -1,5 +1,6 @@
 package model.logic;
 
+import java.util.Comparator;
 import java.util.Date;
 
 public class YoutubeVideo implements Comparable<YoutubeVideo> {
@@ -29,7 +30,7 @@ public class YoutubeVideo implements Comparable<YoutubeVideo> {
 		String[] trendDateRaw = trending_date.split("\\.");
 		int year = Integer.parseInt("20" + trendDateRaw[0]);
 		int month = Integer.parseInt(trendDateRaw[1]);
-		int day = Integer.parseInt( trendDateRaw[2]);
+		int day = Integer.parseInt(trendDateRaw[2]);
 		this.video_id = video_id;
 		this.trending_date = new Date(year, month, day);
 		this.title = title;
@@ -52,6 +53,21 @@ public class YoutubeVideo implements Comparable<YoutubeVideo> {
 	@Override
 	public int compareTo(YoutubeVideo video) {
 		return this.trending_date.compareTo(video.trending_date);
+	}
+
+	/** Comparador alterno de 2 videos por número de likes */
+	public static class ComparadorXLikes implements Comparator<YoutubeVideo> {
+
+		/**
+		 * Comparador alterno de acuerdo al número de likes
+		 * 
+		 * @return valor 0 si video1 y video2 tiene los mismos likes. valor negativo si
+		 *         video1 tiene menos likes que video2. valor positivo si video1 tiene
+		 *         más likes que video2.
+		 */
+		public int compare(YoutubeVideo video1, YoutubeVideo video2) {
+			return 0;
+		}
 	}
 
 	public String getVideo_id() {
@@ -189,7 +205,7 @@ public class YoutubeVideo implements Comparable<YoutubeVideo> {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
+
 	@Override
 	public String toString() {
 		return video_id + title;

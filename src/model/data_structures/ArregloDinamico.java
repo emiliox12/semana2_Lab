@@ -106,7 +106,7 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 
 	@Override
 	public void insertElement(T element, int pos) {
-		
+
 	}
 
 	@Override
@@ -176,7 +176,7 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 	public void changeInfo(int pos, T elem) {
 		elements[pos] = elem;
 	}
-	
+
 	@Override
 	public String toString() {
 		String result = "";
@@ -184,5 +184,31 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 			result += " " + t;
 		}
 		return result;
+	}
+
+	@Override
+	public ArregloDinamico<T> sublista(int numElementos) {
+		if (numElementos == 0) {
+			return null;
+		}
+		int elemCount = (numElementos < currentSize) ? numElementos : currentSize;
+		ArregloDinamico<T> newArray = new ArregloDinamico<>(numElementos + 20);
+		for (int i = 0; i < numElementos; i++) {
+			newArray.insertElement(elements[i], i);
+		}
+		return newArray;
+	}
+
+	@Override
+	public ILista<T> subList(int pos, int size) {
+		if (size == 0) {
+			return null;
+		}
+		int elemCount = (size - pos < currentSize) ? size : currentSize;
+		ArregloDinamico<T> newArray = new ArregloDinamico<>(size + 20);
+		for (int i = pos -1; i < size; i++) {
+			newArray.insertElement(elements[i], i);
+		}
+		return newArray;
 	}
 }
