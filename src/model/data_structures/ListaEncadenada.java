@@ -128,7 +128,7 @@ public class ListaEncadenada<T extends Comparable<T>> implements ILista <T> {
 	public T lastElement() {
 
 		Nodo<T> actual =raiz;
-		
+
 		while (actual.getNext() != null) {
 			actual = actual.getNext();
 		}
@@ -198,10 +198,10 @@ public class ListaEncadenada<T extends Comparable<T>> implements ILista <T> {
 
 	@Override
 	public void exchange(int pos1, int pos2) {
-	
+
 		ArrayList<Nodo<T>> arregloTemporal= new ArrayList<Nodo<T>>();
 		Nodo<T> actual = raiz;
-		
+
 		while (actual!=null) {
 			arregloTemporal.add(actual);
 			actual=actual.getNext();
@@ -210,7 +210,7 @@ public class ListaEncadenada<T extends Comparable<T>> implements ILista <T> {
 		Nodo<T> dos =arregloTemporal.get(pos2);
 		Nodo<T> anteriorUno= arregloTemporal.get(pos1-1);
 		Nodo<T> anteriorDos =arregloTemporal.get(pos2-1);
-		
+
 		if (uno!=null && dos!=null) {
 			Nodo<T> Siguiente1=uno.getNext();
 			Nodo<T> Siguiente2=dos.getNext();
@@ -227,14 +227,14 @@ public class ListaEncadenada<T extends Comparable<T>> implements ILista <T> {
 		Nodo<T> actual =raiz;
 		int posit=0;
 		while (actual.getNext()!= null && posit <=pos-1) {
-			
+
 			if (posit==pos-1) {
 				actual.setElement(elem);
 			}
 			actual=actual.getNext();
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		Nodo<T> actual = raiz;
@@ -244,5 +244,24 @@ public class ListaEncadenada<T extends Comparable<T>> implements ILista <T> {
 			result += " " + actual;
 		}
 		return result;
+	}
+
+	@Override
+	public ILista<T> sublista(int numElementos) {
+
+		ILista<T> rta=null;
+		if (numElementos==0) {
+			return rta;
+		}
+		ListaEncadenada<T> newLinkedlist = new ListaEncadenada<>();
+		Nodo<T> nuevoRaiz = new Nodo<T>(null);
+		Nodo<T> original = raiz;
+		nuevoRaiz=original;
+		while (original.getNext()!=null && newLinkedlist.size()<=numElementos) {
+			Nodo<T> siguiente =original.getNext();
+			nuevoRaiz.setNext(siguiente);
+		}
+		rta=newLinkedlist;
+		return rta;
 	}
 }
