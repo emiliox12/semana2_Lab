@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 
 import org.apache.commons.csv.CSVFormat;
@@ -125,6 +126,13 @@ public class Modelo {
 	
 
 	public void sortByLikes() {
-		sorter.ordenarInsercion(datos, , ascendente);
+		Comparator<YoutubeVideo> comparator = new YoutubeVideo.ComparadorXLikes();
+		long start = System.currentTimeMillis();
+		// sorter.ordenarInsercion(datos, comparator, true);
+		// sorter.ordenarShell(datos, comparator, true);
+		sorter.ordenarMergeSort(datos, comparator, true);
+		// sorter.quickSort(datos, comparator, true);
+		long end = System.currentTimeMillis();
+		System.out.println("Time(ms): " + (end - start));
 	}
 }

@@ -86,7 +86,8 @@ public class Controller {
 					break;	
 					
 				case 6: 	
-					view.printMessage("--------- \nAdición de datos " + new Date() + ": ");
+					view.printMessage("--------- \nOrganización de datos ");
+					modelo.sortByLikes();
 					break;	
 					
 				case 7: 

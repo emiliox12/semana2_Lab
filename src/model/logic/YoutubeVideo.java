@@ -66,7 +66,9 @@ public class YoutubeVideo implements Comparable<YoutubeVideo> {
 		 *         más likes que video2.
 		 */
 		public int compare(YoutubeVideo video1, YoutubeVideo video2) {
-			return 0;
+			if (video1.likes > video2.likes) return 1;
+			else if (video1.likes < video2.likes) return -1;
+			else return 0;
 		}
 	}
 	
